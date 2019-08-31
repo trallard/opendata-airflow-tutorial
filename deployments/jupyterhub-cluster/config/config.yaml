@@ -1,0 +1,22 @@
+singleuser:
+  defaultUrl: "/lab"
+  memory:
+    guarantee: 512M
+    limit: 1G
+  image: 
+    name: trallard/jupyter-rserver
+    tag: 1.4
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["gitpuller", "https://github.com/pyladies-nwuk/Python_meets_R", "master", "reticulate-ws"]
+
+hub:
+  extraConfig: 
+    jupyterlab: |
+      c.Spawner.cmd = ['jupyter-labhub']
+
+# prepare added nodes for arriving users
+prepuller:
+  continuous:
+    enabled: true
