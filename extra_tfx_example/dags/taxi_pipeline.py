@@ -1,14 +1,15 @@
 """Chicago taxi example using TFX."""
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 import datetime
 import logging
 import os
 
 from tfx.components.example_gen.csv_example_gen.component import CsvExampleGen
+from tfx.orchestration.airflow.airflow_runner import AirflowDAGRunner
+from tfx.orchestration.pipeline import PipelineDecorator
+from tfx.utils.dsl_utils import csv_input
 
 # pylint: disable=line-too-long
 # from tfx.components.statistics_gen.component import StatisticsGen # Step 3
@@ -27,9 +28,6 @@ from tfx.components.example_gen.csv_example_gen.component import CsvExampleGen
 # from tfx.components.model_validator.component import ModelValidator # Step 7
 # from tfx.components.pusher.component import Pusher # Step 7
 
-from tfx.orchestration.airflow.airflow_runner import AirflowDAGRunner
-from tfx.orchestration.pipeline import PipelineDecorator
-from tfx.utils.dsl_utils import csv_input
 
 # pylint: enable=line-too-long
 
@@ -138,4 +136,3 @@ def _create_pipeline():
 
 
 pipeline = AirflowDAGRunner(_airflow_config).run(_create_pipeline())
-

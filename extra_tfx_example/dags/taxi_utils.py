@@ -4,8 +4,7 @@ For a TFX pipeline to successfully run, a preprocessing_fn and a
 _build_estimator function needs to be provided.  This file contains both.
 """
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import division, print_function
 
 import os  # pylint: disable=unused-import
 
@@ -372,4 +371,3 @@ _FARE_KEY = "fare"
 #       'eval_input_receiver_fn': receiver_fn
 #   }
 # Step 5 END --------------------------
-

@@ -7,8 +7,7 @@ This file is equivalent to examples/chicago_taxi/trainer/model.py and
 examples/chicago_taxi/preprocess.py.
 """
 
-from __future__ import division
-from __future__ import print_function
+from __future__ import division, print_function
 
 import os
 
@@ -17,8 +16,7 @@ import tensorflow_model_analysis as tfma
 import tensorflow_transform as tft
 from tensorflow_transform.beam.tft_beam_io import transform_fn_io
 from tensorflow_transform.saved import saved_transform_io
-from tensorflow_transform.tf_metadata import metadata_io
-from tensorflow_transform.tf_metadata import schema_utils
+from tensorflow_transform.tf_metadata import metadata_io, schema_utils
 
 # Categorical features are assumed to each have a maximum value in the dataset.
 _MAX_CATEGORICAL_FEATURE_VALUES = [24, 31, 12]
@@ -371,4 +369,3 @@ def trainer_fn(hparams, schema):
         "eval_spec": eval_spec,
         "eval_input_receiver_fn": receiver_fn,
     }
-

@@ -1,11 +1,9 @@
+import gzip
 import os
-
-from pathlib import Path
 from datetime import datetime as dt
+from pathlib import Path
 
 import pandas as pd
-import gzip
-
 
 # we will use today date
 today = dt.today().strftime("%d-%b-%y")
@@ -73,4 +71,3 @@ if __name__ == "__main__":
     save_df(INTERIM_DATA_PATH, clean_state)
 
     print(f"Completed cleaning for {state}")
-

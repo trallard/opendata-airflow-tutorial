@@ -1,12 +1,11 @@
 """Chicago taxi example using TFX."""
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 import datetime
 import logging
 import os
+
 from tfx.components.evaluator.component import Evaluator
 from tfx.components.example_gen.csv_example_gen.component import CsvExampleGen
 from tfx.components.example_validator.component import ExampleValidator
@@ -18,11 +17,8 @@ from tfx.components.trainer.component import Trainer
 from tfx.components.transform.component import Transform
 from tfx.orchestration.airflow.airflow_runner import AirflowDAGRunner
 from tfx.orchestration.pipeline import PipelineDecorator
-from tfx.proto import evaluator_pb2
-from tfx.proto import pusher_pb2
-from tfx.proto import trainer_pb2
+from tfx.proto import evaluator_pb2, pusher_pb2, trainer_pb2
 from tfx.utils.dsl_utils import csv_input
-
 
 # This example assumes that the taxi data is stored in ~/taxi/data and the
 # taxi utility function is in ~/taxi.  Feel free to customize this as needed.
@@ -139,4 +135,3 @@ def _create_pipeline():
 
 
 pipeline = AirflowDAGRunner(_airflow_config).run(_create_pipeline())
-

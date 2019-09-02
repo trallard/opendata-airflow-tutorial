@@ -1,7 +1,8 @@
-from pathlib import Path
-import requests
 import io
+from pathlib import Path
 from zipfile import ZipFile
+
+import requests
 
 RAW_DATA_PATH = Path("data/raw/counties/")
 
