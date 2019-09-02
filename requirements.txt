@@ -1,0 +1,5 @@
+pandas
+rows
+papermill
+jupyter lab
+apache-airflow

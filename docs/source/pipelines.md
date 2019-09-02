@@ -74,3 +74,13 @@ GNU Make + Unix pipes + Steroids
 You will notice that you have a `census_data` directory. This contains both the scripts and the notebooks versions of the analysis.
 
 Let's have a look at the notebooks!
+
+
+### Create your own pipeline
+
+Note that there is not a single correct answer for this. Many will have different approaches. 
+
+🚦 Create a local script/pipeline that will run:
+
+get data  -> clean data -> analyse data -> generate report
+
