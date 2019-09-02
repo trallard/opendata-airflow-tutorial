@@ -84,23 +84,25 @@ Follow the instructions that best suit your installation.
 Anaconda
 --------
 
-If you are using Anaconda first you will need to make a directory for the tutorial, for example ``mkdir airflow-tutorial``.
-Once created make sure to change into it using ``cd airflow-tutorial``.
-
-Start by creating a conda environment: ``conda create -y --name airflow-env python=3.7`.
-
-Now you can activate and install the dependencies
+Clone the repository: 
 ::
-    # install dependencies
-    conda install -f -y -q --name airflow-env --file requirements.txt
+    git clone https://github.com/trallard/opendata-airflow-tutorial
 
-    # activate
+Change into the repo
+::
+    cd opendata-airflow-tutorial   
+
+Create a conda environment:
+:: 
+    conda env create -f environment.yml
+
+Once all the dependencies are installed you can activate your environment through the following commands 
+::
     source activate airflow-env # Mac
     activate airflow-env        # Windows and Linux
-
 To exit the environment you can use 
 ::
-    deactivate airflow-env    
+    conda deactivate   
 
 virtualenv
 -----------
