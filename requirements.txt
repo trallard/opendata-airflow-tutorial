@@ -1,5 +1,5 @@
 pandas
 rows
 papermill
-jupyter lab
+jupyterlab
 apache-airflow
