@@ -183,6 +183,92 @@ airflow trigger_dag tutorial
 Let's create our first simple DAG. 
 Inside the dag directory (`~/airflow/dags)` create a `simple_dag.py` file.
 
+1. Import Python dependencies
+```python
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.python_operator import PythonOperator
+```
+
+2. Default Airflow arguments
+```python
+default_args = {
+    "owner": "airflow",
+    "depends_on_past": False,
+    "start_date": datetime(2019, 4, 30),
+    "email": ["airflow@example.com"],
+    "email_on_failure": False,
+    "email_on_retry": False,
+     # If a task fails, retry it once after waiting
+    # at least 2 minutes
+    "retries": 1,
+    "retry_delay": timedelta(minutes=2),
+}
+```
+
+3. Instantiate the DAG:Give the DAG name, configure the schedule, and set the DAG settings
+
+```python
+dag = DAG(
+    "hello_world",
+    description="Simple tutorial DAG",
+    schedule_interval="0 12 * * *",
+    default_args=default_args,
+    catchup=False,
+)
+```
+Here are a couple of options you can use for your `schedule_interval`. You can choose to use some preset argument or cron-like argument:
+
+![](_static/dag-time.png)
+
+For example
+`schedule_interval='@daily' `
+`schedule_interval='0 0 * * *'`
+
+For reference <https://devhints.io/cron> or <https://www.codementor.io/akul08/the-ultimate-crontab-cheatsheet-5op0f7o4r>
+
+4. Layout your tasks
+
+```python
+t1 = DummyOperator(task_id="dummy_task", retries=3, dag=dag)
+
+t2 = PythonOperator(task_id="hello_task", python_callable=print_hello, dag=dag)
+```
+
+5. Setting dependencies
+ Set the order of the tasks
+
+```python
+t1 >> t2
+```
+
+Other ways 
+```python
+# This means that t2 will depend on t1
+# running successfully to run.
+t1.set_downstream(t2)
+
+# similar to above where t3 will depend on t1
+t3.set_upstream(t1)
+```
+
+```python
+# And the upstream dependency with the
+# bit shift operator:
+t2 << t1
+```
+```python
+# A list of tasks can also be set as
+# dependencies. These operations
+# all have the same effect:
+t1.set_downstream([t2, t3])
+t1 >> [t2, t3]
+[t2, t3] << t1
+
+```
+
+Your final DAG should look like this
 
 ```python
 from datetime import datetime, timedelta
@@ -198,10 +284,12 @@ def print_hello():
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": datetime(2019, 4, 30),
+    "start_date": datetime(2019, 8, 31),
     "email": ["airflow@example.com"],
     "email_on_failure": False,
     "email_on_retry": False,
+     # If a task fails, retry it once after waiting
+    # at least 2 minutes
     "retries": 1,
     "retry_delay": timedelta(minutes=2),
 }
@@ -284,7 +372,7 @@ from my_operators import MyFirstOperator
 
 dag = DAG('my_test_dag', description='Another tutorial DAG',
           schedule_interval='0 12 * * *',
-          start_date=datetime(2017, 3, 20), catchup=False)
+          start_date=datetime(2019, 8, 31), catchup=False)
 
 dummy_task = DummyOperator(task_id='dummy_task', dag=dag)
 

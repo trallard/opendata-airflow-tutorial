@@ -88,7 +88,7 @@ html_theme_options = {
     "github_banner": False,
     "github_button": True,
     "github_user": "trallard",
-    "github_repo": "opendata-EuroScipy",
+    "github_repo": "opendata-airflow-tutorial",
     "github_type": "star",
     "font_family": "Nunito, Georgia, sans",
     "head_font_family": "Nunito, Georgia, serif",

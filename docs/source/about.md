@@ -20,3 +20,13 @@ We will be taking a look at the basic concepts of data pipelines as well as prac
 
 You will find 🚦 across the tutorial examples. We will use this to identify how folks are doing over the workshop (if following along in person). 
 These will indicate practical or hands-on portions of the tutorial.
+
+## Additional tutorial (PyCon US)
+
+For another (much longer) tutorial integrating MYSQL and Twitter stream data check out <https://github.com/trallard/airflow-tutorial>
+
+Also in the upcoming months I have planned:
+- Deploying Airflow in Kubernetes (AKS)
+- In depth programmatic report generation with Airflow and papermill
+- Airflow + dagster <https://github.com/dagster-io/dagster>
+- Airflow + R? 

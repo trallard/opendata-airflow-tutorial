@@ -71,9 +71,27 @@ GNU Make + Unix pipes + Steroids
 
 ## Creating a simple data analysis pipeline
 
-You will notice that you have a `census_data` directory. This contains both the scripts and the notebooks versions of the analysis.
+
+
+Let's start by cloning the repository<https://github.com/trallard/opendata-airflow-tutorial>
+
+```
+git clone https://github.com/trallard/opendata-airflow-tutorial.git
+```
+
+You will notice that you have a `census_data` directory. This contains both the scripts and the notebooks versions of the analysis we are going to use.
 
 Let's have a look at the notebooks!
+
+```
+jupyter lab
+```
+
+Alternatively:
+
+```
+jupyter
+```
 
 
 ### Create your own pipeline
@@ -82,5 +100,6 @@ Note that there is not a single correct answer for this. Many will have differen
 
 🚦 Create a local script/pipeline that will run:
 
-get data  -> clean data -> analyse data -> generate report
+get data  -> clean data -> analyse data -> generate report / generate plots
 
+You already have  `get_data.py`, `clean_data.py` and `analysis.py` as a simplified version of the notebooks. You can add a `create_plots.py` or `create_report.py`.
